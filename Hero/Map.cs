@@ -104,6 +104,7 @@ public class Ui
         }
 
         goblin.Attack(hero);
+        hero.ShowHero();
     }
 
    
