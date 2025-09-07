@@ -6,22 +6,6 @@ using Microsoft.VisualBasic.FileIO;
 public class Ui
 {
 
-    public static void Hit_Miss()
-    {
-        string option = Console.ReadLine();
-        if (option == "1" || option.ToLower() == "attack")
-        {
-            weapon.Attack(goblin);
-            goblin.ShowStats();
-        }
-        else
-        {
-            Console.WriteLine("You did nothing and the goblin attacks you!\nYou took 10 damage.");
-            hero.Health -= 10;
-            hero.Level += 1;
-            hero.ShowHero();
-        }
-    }
     public static void ShowMap()
     {
         Console.WriteLine("You are in a dark forest. Paths lead north, south, east, and west.");
@@ -105,9 +89,21 @@ public class Ui
                   break;
           }*/
 
-        Hit_Miss();
+        string option = Console.ReadLine();
+        if (option == "1" || option.ToLower() == "attack")
+        {
+            weapon.Attack(goblin);
+            goblin.ShowStats();
+        }
+        else
+        {
+            Console.WriteLine("You did nothing and the goblin attacks you!\nYou took 10 damage.");
+            hero.Health -= 10;
+            hero.Level += 1;
+            hero.ShowHero();
+        }
 
-
+        goblin.Attack(hero);
     }
 
    

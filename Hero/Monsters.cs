@@ -28,6 +28,11 @@ namespace Goblins
         {
             get { return name; }
         }
+        public void Attack(Hero hero)
+        {
+            Console.WriteLine($"The {name} attacks you and deals {damage} damage!");
+            hero.Health -= damage;
+        }
         public void ShowStats()
         {
             Console.WriteLine($"Monster: {name}, Health: {health}, Damage: {damage}");
