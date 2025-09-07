@@ -20,7 +20,9 @@ namespace Hero_Journey
         }
         public int Level
         {
+
             get { return level; }
+            set { level = value; }
         }
         public string Name
         {
@@ -34,6 +36,19 @@ namespace Hero_Journey
         public void ShowMana()
         {
             Console.WriteLine($"Mana: {mana}");
+        }
+        public void Spell()
+        {
+
+            if (level >= 1 && mana >= 10)
+            {
+                Console.WriteLine("You cast a spell!");
+                mana -= 10;
+            }
+            else
+            {
+                Console.WriteLine("Not enough mana to cast a spell.");
+            }
         }
     }
 }
