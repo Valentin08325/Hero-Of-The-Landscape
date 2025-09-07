@@ -79,6 +79,7 @@ public class Weapon
             }
             Console.WriteLine($"You attack with your {type}, dealing {damage} damage. Durability left: {durability}");
             Console.ReadLine();
+            goblin.Health -= damage;
             Console.WriteLine($"Monster took {damage} damage.");
         }
         else
