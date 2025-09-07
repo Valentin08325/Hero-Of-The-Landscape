@@ -2,22 +2,17 @@
 
 namespace Hero_Journey
 {
-    public class Hero
+    public class Hero(int health, int mana, int level)
     {
-        private int health;
-        private int mana;
-        private int level;
+        private int health = health;
+        private int mana = mana;
+        private int level = level;
         private string name;
-        public Hero(int health, int mana, int level)
-        {
-            this.health = health;
-            this.mana = mana;
-            this.level = level;
-        }
 
         public int Health
         {
             get { return health; }
+            set { health = value; }
         }
         public int Mana
         {
@@ -29,7 +24,7 @@ namespace Hero_Journey
         }
         public string Name
         {
-            set { name = Console.ReadLine(); }
+            set => name = Console.ReadLine();
             get { return name; }
         }
         public void ShowHero()

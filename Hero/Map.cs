@@ -3,31 +3,7 @@ using Hero_Journey;
 using Hero_Weapon;
 public class Ui
 {
-    public static void WeaponStats()
-    {
-        Random random = new Random();
-        int A = random.Next(5, 100);
-        int B = random.Next(30, 100);
-        Weapon weapon = new Weapon(A, B);
-
-        weapon.Type = "Random";
-
-        Console.WriteLine($"A {weapon.Type}");
-        Console.WriteLine($"Would you like to name your {weapon.Type}");
-        string answer = Console.ReadLine().ToLower();
-        if (answer == "yes")
-        {
-            Console.WriteLine($"How do u want to name your {weapon.Type}?");
-            weapon.Name = "No name";
-        }
-        else
-        {
-            weapon.Name = weapon.Type;
-        }
-
-
-            weapon.ShowWeapon();
-    }
+    
 
     public static void ShowMap()
     {
@@ -43,37 +19,61 @@ public class Ui
     {
         Hero hero = new Hero(100, 50, 1);
         Console.WriteLine("Welcome to |Hero of the Landscape| ");
+        Console.ReadLine();
         Console.WriteLine("Please enter your hero's name:");
+
         hero.Name = "No Name";
         Console.WriteLine($"Hello {hero.Name}!");
+        Console.ReadLine();
         Console.WriteLine("Welcome to the journey of your lifetime!");
-        
+        Console.ReadLine();
+
         Console.WriteLine($"Now.... you run up to a chest.... You open the chest and you find weapon and it is...");
-        WeaponStats();
-        Console.WriteLine("Now you can start your journey!");
-        ShowMap();
-        string direction = Console.ReadLine().ToLower();
-        switch (direction)
-        {
-            case "1":
-            case "north":
-                Console.WriteLine("You head north into the mountains.");
-                break;
-            case "2":
-            case "south":
-                Console.WriteLine("You head south into the desert.");
-                break;
-            case "3":
-            case "east":
-                Console.WriteLine("You head east into the forest.");
-                break;
-            case "4":
-            case "west":
-                Console.WriteLine("You head west into the ocean.");
-                break;
-            default:
-                Console.WriteLine("Invalid direction. Please choose north, south, east, or west.");
-                break;
-        }
+        Console.ReadLine();
+
+        Random random = new Random();
+        int A = random.Next(5, 100);
+        int B = random.Next(30, 100);
+        Weapon weapon = new Weapon(A,B);
+        Console.WriteLine($"A {weapon.Type}");
+        weapon.ShowWeapon();
+        Console.ReadLine();
+
+        Goblin goblin = new Goblin(50, 10);
+
+        Console.WriteLine($"Now... Lest test what you can do with your weapon!\nAttack the {goblin.Name}! ");
+        Console.ReadLine();
+        goblin.ShowStats();
+        Console.ReadLine();
+
+        Console.WriteLine("What do u want to do?\n1.Attack\n2._____");
+        string option = Console.ReadLine();
+        
+        // ShowMap();
+        //string direction = Console.ReadLine().ToLower();
+        /*  switch (direction)
+          {
+              case "1":
+              case "north":
+                  Console.WriteLine("You head north into the mountains.");
+                  break;
+              case "2":
+              case "south":
+                  Console.WriteLine("You head south into the desert.");
+                  break;
+              case "3":
+              case "east":
+                  Console.WriteLine("You head east into the forest.");
+                  break;
+              case "4":
+              case "west":
+                  Console.WriteLine("You head west into the ocean.");
+                  break;
+              default:
+                  Console.WriteLine("Invalid direction. Please choose north, south, east, or west.");
+                  break;
+          }*/
+
+
     }
 }
