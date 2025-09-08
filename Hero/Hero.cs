@@ -2,12 +2,20 @@
 
 namespace Hero_Journey
 {
-    public class Hero(int health, int mana, int level)
+    public class Hero
     {
-        private int health = health;
-        private int mana = mana;
-        private int level = level;
+        private int health;
+        private int mana;
+        private int level;
         private string name;
+
+        public Hero(int health,int mana, int level)
+        {
+            this.health = health;
+            this.mana = mana;
+            this.level = level;
+            this.name = "No Name";
+        }
 
         public int Health
         {

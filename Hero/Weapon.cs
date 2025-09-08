@@ -1,4 +1,5 @@
-﻿using Goblins;
+﻿using Monsters;
+using Hero_Journey;
 
 namespace Hero_Weapon;
 
@@ -64,25 +65,25 @@ public class Weapon
             durability -= 1;
             Random random = new Random();
             int damage = random.Next(1, 20);
-            goblin.Health -= damage;
             if (goblin.Health < 0)
             {
                 goblin.Health = 0;
             }
-            if(goblin.Health == 0)
+            else if(goblin.Health == 0)
             {
                 Console.WriteLine("Goblin is defeated!");
+               
             }
             if (damage == 20)
             {
                 Console.WriteLine("Critical Hit!");
             }
             Console.WriteLine($"You attack with your {type}, dealing {damage} damage. Durability left: {durability}");
-            Console.ReadLine();
+            Thread.Sleep(2000);
             goblin.Health -= damage;
             Console.WriteLine($"Monster took {damage} damage.");
         }
-        else
+        else if (durability <= 0)
         {
             Console.WriteLine($"Your {name} is broken and can't be used.");
         }

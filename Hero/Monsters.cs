@@ -1,8 +1,7 @@
 ﻿using Hero_Journey;
-using Hero_Weapon;
 using System;
 
-namespace Goblins
+namespace Monsters
 {
     public class Goblin
     {
@@ -30,8 +29,16 @@ namespace Goblins
         }
         public void Attack(Hero hero)
         {
-            Console.WriteLine($"The {name} attacks you and deals {damage} damage!");
-            hero.Health -= damage;
+            if (hero.Health > 0)
+            { 
+             Thread.Sleep(2000);
+             Console.WriteLine($"The {name} attacks you and deals {damage} damage!");
+             hero.Health -= damage;
+            }
+            else
+            {
+                Console.WriteLine("The hero fell!");
+            }
         }
         public void ShowStats()
         {
