@@ -99,8 +99,7 @@ public class Ui
         WaitTwoSeconds();
 
         
-        int dmg = random.Next(1, 10);
-        goblin = new Goblin(50, dmg); /**/
+        goblin = new Goblin(50, 10); /**/
 
         Console.WriteLine($"Now... Lest test what you can do with your weapon!\nAttack the {goblin.Name}! ");
         WaitTwoSeconds();

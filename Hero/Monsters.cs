@@ -29,11 +29,18 @@ namespace Monsters
         }
         public void Attack(Hero hero)
         {
+            Random random = new Random();
+            int newDamage = random.Next(1, Damage);
+            if (newDamage == Damage)
+            {
+                Console.WriteLine("Critical hit!");
+            }
+
             if (hero.Health > 0)
             { 
              Thread.Sleep(2000);
-             Console.WriteLine($"The {name} attacks you and deals {damage} damage!");
-             hero.Health -= damage;
+             Console.WriteLine($"The {name} attacks you and deals {newDamage} damage!");
+             hero.Health -= newDamage;
             }
             else
             {
