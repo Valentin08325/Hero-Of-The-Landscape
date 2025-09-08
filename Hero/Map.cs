@@ -32,7 +32,7 @@ public class Ui
 
                 goblin.Attack(hero);
                 WaitTwoSeconds();
-                hero.ShowHero();
+                hero.ShowStats();
                 WaitTwoSeconds();
             }
 
@@ -40,7 +40,7 @@ public class Ui
     }
     public static void Options()
     {
-        Console.WriteLine("What do u want to do?\n1.Attack\n2._____");
+        Console.WriteLine("What do u want to do?\n1.Attack\n2.Spell");
         string option = Console.ReadLine();
         if (option == "1" || option.ToLower() == "attack")
         {
@@ -48,14 +48,26 @@ public class Ui
             WaitTwoSeconds();
             goblin.ShowStats();
         }
-        else 
+        else if (option == "2" || option.ToLower() == "spell")
         {
 
-            Console.WriteLine($"You did nothing and the goblin attacks you!\nYou took {goblin.Damage} damage.");
-            hero.Health -= goblin.Damage;
-            // hero.Level += 1;
-
-            hero.ShowHero();
+           if(hero.Level >= 1)
+            {
+                int spelldmg = hero.Mana + hero.Level;
+                hero.Spell();
+                WaitTwoSeconds();
+                goblin.Health -= spelldmg;
+                Console.WriteLine($"You cast a spell dealing {spelldmg} damage.");
+                WaitTwoSeconds();
+                goblin.ShowStats();
+                WaitTwoSeconds();
+                hero.ShowStats();
+            }
+            else
+            {
+                Console.WriteLine("You need to be at least level 1 to cast a spell.");
+            }
+            return;
         }
     }
     public static void ShowMap()
@@ -73,7 +85,7 @@ public class Ui
     }
     public static void Main(string[] args)
     {
-        hero = new Hero(100, 50, 1); /**/
+        hero = new Hero(100, 50, 2); /**/
         Console.WriteLine("Welcome to |Hero of the Landscape| ");
         WaitTwoSeconds();
         Console.WriteLine("Please enter your hero's name:");
@@ -81,34 +93,33 @@ public class Ui
         hero.Name = "No Name";
         Console.WriteLine($"Hello {hero.Name}!");
         WaitTwoSeconds();
-        hero.ShowHero();
+        hero.ShowStats();
         WaitTwoSeconds();
 
         Console.WriteLine("Welcome to the journey of your lifetime!");
         WaitTwoSeconds();
 
-        Console.WriteLine($"Now.... you run up to a chest.... You open the chest and you find weapon and it is...");
+        Console.WriteLine($"Now.... you run up to a chest.... \nYou open the chest and you find weapon and it is...");
         WaitTwoSeconds();
 
         Random random = new Random();
-        int A = random.Next(5, 100);
-        int B = random.Next(30, 100);
-        weapon = new Weapon(A,B); /**/
+        int A = random.Next(5, 100); // damage
+        int B = random.Next(30, 100); //durability
+        weapon = new Weapon(A, B); /**/
         Console.WriteLine($"A {weapon.Type}");
         weapon.ShowWeapon();
         WaitTwoSeconds();
 
-        
+
         goblin = new Goblin(50, 10); /**/
 
         Console.WriteLine($"Now... Lest test what you can do with your weapon!\nAttack the {goblin.Name}! ");
         WaitTwoSeconds();
         goblin.ShowStats();
         WaitTwoSeconds();
-        
+
         CombatSystem();
 
-    }
-
-   
+        Console.WriteLine("GOOD JOB! YOU DID THE DEMO!");
+    }  
 }

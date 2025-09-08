@@ -8,6 +8,7 @@ namespace Hero_Journey
         private int mana;
         private int level;
         private string name;
+        private int spell_damage;
 
         public Hero(int health,int mana, int level)
         {
@@ -37,14 +38,20 @@ namespace Hero_Journey
             set => name = Console.ReadLine();
             get { return name; }
         }
-        public void ShowHero()
+
+        public int SpellDamage
+        {
+            get { return spell_damage; }
+            set { spell_damage = mana + Level; }
+        }
+        public void ShowStats()
         {
             Console.WriteLine($"Name: {name}, Health: {health}, Mana: {mana}, Level: {level}");
         }
-        public void ShowMana()
+       /* public void ShowMana()
         {
             Console.WriteLine($"Mana: {mana}");
-        }
+        }*/
         public void Spell()
         {
 
@@ -52,6 +59,7 @@ namespace Hero_Journey
             {
                 Console.WriteLine("You cast a spell!");
                 mana -= 10;
+                
             }
             else
             {
