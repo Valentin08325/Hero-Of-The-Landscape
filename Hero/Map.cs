@@ -4,7 +4,7 @@ using Hero_Weapon;
 using Monsters;
 using Microsoft.VisualBasic.FileIO;
 using System.Threading.Tasks;
-public class Ui
+public class The_game
 {
    
     static Hero hero;
