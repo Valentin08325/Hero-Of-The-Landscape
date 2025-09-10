@@ -38,38 +38,7 @@ public class Ui
 
         }
     }
-
-    public static void Spells()
-    {
-        Console.WriteLine("What kind of spell do you want to use?\n1.Fire\n2.Ice");
-        string spellType = Console.ReadLine();
-        if (spellType == "1" || spellType.ToLower() == "fire")
-        {
-            if (goblin.Name.ToLower() == "goblin")
-            {
-                Console.WriteLine($"The {goblin.Name} is weak to fire!");
-                int spellDmg = hero.Mana + hero.Level + 10;
-                goblin.Health -= spellDmg;
-            }
-            else
-            {
-                hero.Spell();
-            }
-        }
-        else if(spellType == "2" || spellType.ToLower() == "ice")
-        {
-            if (goblin.Name.ToLower() == "gobline")
-            {
-                Console.WriteLine($"The {goblin.Name} is immune to ice!");
-                int spellDmg = hero.Mana + hero.Level - goblin.Health / 2;
-                goblin.Health -= spellDmg;
-            }
-            else
-            {
-                hero.Spell();
-            }
-        }
-    }
+    
     public static void Options()
     {
         Console.WriteLine("What do u want to do?\n1.Attack\n2.Spell");
@@ -85,11 +54,11 @@ public class Ui
 
            if(hero.Level >= 1)
             {
-                int spelldmg = hero.Mana + hero.Level;
-                Spells();
+                
+                hero.Spell(goblin);
                 WaitTwoSeconds();
-                goblin.Health -= spelldmg;
-                Console.WriteLine($"You cast a spell dealing {spelldmg} damage.");
+                
+                Console.WriteLine($"You cast a spell dealing {hero.SpellDamage} damage.");
                 WaitTwoSeconds();
                 goblin.ShowStats();
                 WaitTwoSeconds();
@@ -152,8 +121,14 @@ public class Ui
 
         CombatSystem();
 
-        Console.WriteLine("GOOD JOB! YOU DID THE DEMO!");
+        
         Console.WriteLine("Do you wanna see your stats?");
-        hero.ShowStats();
-    }  
+        string answer = Console.ReadLine().ToLower();
+        if (answer == "yes" || answer == "y")
+            hero.ShowStats();
+        else
+            Console.WriteLine("Ok, bye!");
+
+        
+    }
 }

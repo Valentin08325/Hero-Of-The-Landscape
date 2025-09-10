@@ -43,7 +43,7 @@ namespace Hero_Journey
         public int SpellDamage
         {
             get { return spell_damage; }
-            set { spell_damage = mana + Level; }
+            set { spell_damage = value; }
         }
         public void ShowStats()
         {
@@ -53,14 +53,17 @@ namespace Hero_Journey
         {
             Console.WriteLine($"Mana: {mana}");
         }*/
-        public void Spell()
+        public void Spell(Monster goblin)
         {
 
             if (level >= 1 && mana >= 10)
             {
                 Console.WriteLine("You cast a spell!");
                 mana -= 10;
-                
+                double dmg = mana + level /2 * 0.5;
+                spell_damage = (int)dmg;
+
+                goblin.Health -= SpellDamage;
             }
             else
             {
