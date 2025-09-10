@@ -9,10 +9,10 @@ public class Ui
    
     static Hero hero;
     static Weapon weapon;
-    static Goblin goblin;
+    static Monster goblin;
     public static void CombatSystem()
     {
-        while (hero.Health > 0 || goblin.Health > 0)
+        while (hero.Health > 0 && goblin.Health > 0)
         {
 
             Options();
@@ -38,6 +38,38 @@ public class Ui
 
         }
     }
+
+    public static void Spells()
+    {
+        Console.WriteLine("What kind of spell do you want to use?\n1.Fire\n2.Ice");
+        string spellType = Console.ReadLine();
+        if (spellType == "1" || spellType.ToLower() == "fire")
+        {
+            if (goblin.Name.ToLower() == "goblin")
+            {
+                Console.WriteLine($"The {goblin.Name} is weak to fire!");
+                int spellDmg = hero.Mana + hero.Level + 10;
+                goblin.Health -= spellDmg;
+            }
+            else
+            {
+                hero.Spell();
+            }
+        }
+        else if(spellType == "2" || spellType.ToLower() == "ice")
+        {
+            if (goblin.Name.ToLower() == "gobline")
+            {
+                Console.WriteLine($"The {goblin.Name} is immune to ice!");
+                int spellDmg = hero.Mana + hero.Level - goblin.Health / 2;
+                goblin.Health -= spellDmg;
+            }
+            else
+            {
+                hero.Spell();
+            }
+        }
+    }
     public static void Options()
     {
         Console.WriteLine("What do u want to do?\n1.Attack\n2.Spell");
@@ -54,7 +86,7 @@ public class Ui
            if(hero.Level >= 1)
             {
                 int spelldmg = hero.Mana + hero.Level;
-                hero.Spell();
+                Spells();
                 WaitTwoSeconds();
                 goblin.Health -= spelldmg;
                 Console.WriteLine($"You cast a spell dealing {spelldmg} damage.");
@@ -111,9 +143,9 @@ public class Ui
         WaitTwoSeconds();
 
 
-        goblin = new Goblin(50, 10); /**/
+        goblin = new Monster(50, 10); /**/
 
-        Console.WriteLine($"Now... Lest test what you can do with your weapon!\nAttack the {goblin.Name}! ");
+        Console.WriteLine($"Now... Lets test what you can do with your weapon!\nAttack the {goblin.Name}! ");
         WaitTwoSeconds();
         goblin.ShowStats();
         WaitTwoSeconds();
@@ -121,5 +153,7 @@ public class Ui
         CombatSystem();
 
         Console.WriteLine("GOOD JOB! YOU DID THE DEMO!");
+        Console.WriteLine("Do you wanna see your stats?");
+        hero.ShowStats();
     }  
 }

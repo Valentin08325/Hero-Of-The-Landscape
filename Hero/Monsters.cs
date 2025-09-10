@@ -3,12 +3,12 @@ using System;
 
 namespace Monsters
 {
-    public class Goblin
+    public class Monster
     {
         private int health;
         private int damage;
         private string name;
-        public Goblin(int health, int damage)
+        public Monster(int health, int damage)
         {
             this.health = health;
             this.damage = damage;

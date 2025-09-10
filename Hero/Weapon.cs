@@ -58,7 +58,7 @@ public class Weapon
         get { return durability; }
     }
 
-    public void Attack(Goblin goblin)
+    public void Attack(Monster goblin)
     {
         if (durability > 0)
         {
