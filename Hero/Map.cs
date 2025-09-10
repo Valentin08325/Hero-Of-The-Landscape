@@ -1,12 +1,9 @@
-﻿using System;
-using Hero_Journey;
+﻿using Hero_Journey;
 using Hero_Weapon;
 using Monsters;
-using Microsoft.VisualBasic.FileIO;
-using System.Threading.Tasks;
 public class The_game
 {
-   
+
     static Hero hero;
     static Weapon weapon;
     static Monster goblin;
@@ -38,7 +35,7 @@ public class The_game
 
         }
     }
-    
+
     public static void Options()
     {
         Console.WriteLine("What do u want to do?\n1.Attack\n2.Spell");
@@ -52,12 +49,12 @@ public class The_game
         else if (option == "2" || option.ToLower() == "spell")
         {
 
-           if(hero.Level >= 1)
+            if (hero.Level >= 1)
             {
-                
+
                 hero.Spell(goblin);
                 WaitTwoSeconds();
-                
+
                 Console.WriteLine($"You cast a spell dealing {hero.SpellDamage} damage.");
                 WaitTwoSeconds();
                 goblin.ShowStats();
@@ -121,7 +118,7 @@ public class The_game
 
         CombatSystem();
 
-        
+
         Console.WriteLine("Do you wanna see your stats?");
         string answer = Console.ReadLine().ToLower();
         if (answer == "yes" || answer == "y")
@@ -129,6 +126,6 @@ public class The_game
         else
             Console.WriteLine("Ok, bye!");
 
-        
+
     }
 }
